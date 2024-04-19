@@ -27,6 +27,8 @@ void hermesLog(const char *componentName, const char *fmt, ...) {
 #ifdef __ANDROID__
   __android_log_vprint(ANDROID_LOG_INFO, componentName, fmt, args);
 #elif defined(__APPLE__)
+// Xcode 15.3 introduced an issue where vsnprintf seems to be removed from tvOS
+#if !(defined(TARGET_OS_TV) && TARGET_OS_TV)
   static os_log_t hermesLogger = os_log_create("dev.hermesengine", "Default");
   // Need to make a copy in order to do the vsprintf trick.
   va_list argsCopy;
@@ -43,6 +45,7 @@ void hermesLog(const char *componentName, const char *fmt, ...) {
       "%{public}s: %{public}s",
       componentName,
       buffer.get());
+#endif
 #else
   fprintf(stderr, "%s: ", componentName);
   vfprintf(stderr, fmt, args);
