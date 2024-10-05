@@ -135,6 +135,7 @@ void Process::PreventCoreFiles() {
 
 #if defined(HAVE_MACH_MACH_H) && !defined(__GNU__) && !(defined(TARGET_OS_TV) && TARGET_OS_TV)
   // Disable crash reporting on Mac OS X 10.0-10.4
+  // Disable crash reporting on tvOS: 'task_get_exception_ports' is unavailable: not available on tvOS
 
   // get information about the original set of exception ports for the task
   mach_msg_type_number_t Count = 0;
