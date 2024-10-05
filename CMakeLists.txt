@@ -57,11 +57,7 @@ if(HERMES_APPLE_TARGET_PLATFORM MATCHES "catalyst")
   set(THREADS_PREFER_PTHREAD_FLAG ON)
 endif()
 
-if(HERMES_APPLE_TARGET_PLATFORM MATCHES "appletvos")
-  add_definitions(-DTARGET_OS_TV=1)
-endif()
-
-if(HERMES_APPLE_TARGET_PLATFORM MATCHES "appletvsimulator")
+if(HERMES_APPLE_TARGET_PLATFORM MATCHES "appletv")
   add_definitions(-DTARGET_OS_TV=1)
 endif()
 
