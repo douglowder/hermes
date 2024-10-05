@@ -47,7 +47,7 @@
 #include <TargetConditionals.h>
 #endif
 
-#if defined(__APPLE__) && !(defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE) && !(defined(TARGET_OS_TV) && TARGET_OS_TV)
+#if defined(__APPLE__) && !(defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE)
 #define USE_NSGETENVIRON 1
 #else
 #define USE_NSGETENVIRON 0

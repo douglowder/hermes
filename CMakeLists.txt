@@ -58,6 +58,7 @@ if(HERMES_APPLE_TARGET_PLATFORM MATCHES "catalyst")
 endif()
 
 if(HERMES_APPLE_TARGET_PLATFORM MATCHES "appletv")
+  add_definitions(-DTARGET_OS_IPHONE=1)
   add_definitions(-DTARGET_OS_TV=1)
 endif()
 
