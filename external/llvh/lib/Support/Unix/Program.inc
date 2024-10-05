@@ -200,11 +200,7 @@ static bool Execute(ProcessInfo &PI, StringRef Program,
   // If this OS has posix_spawn and there is no memory limit being implied, use
   // posix_spawn.  It is more efficient than fork/exec.
 #ifdef HAVE_POSIX_SPAWN
-#if defined(TARGET_OS_TV) && TARGET_OS_TV
-  {
-#else
   if (MemoryLimit == 0) {
-#endif
     posix_spawn_file_actions_t FileActionsStore;
     posix_spawn_file_actions_t *FileActions = nullptr;
 
